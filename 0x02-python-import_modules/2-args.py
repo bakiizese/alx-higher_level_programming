@@ -6,7 +6,7 @@ if __name__ == "__main__":
     if ar == 1:
         print("{} arguments.".format(ar-1))
     elif ar == 2:
-        print("{} arguments:".format(ar-1))
+        print("{} argument:".format(ar-1))
     else:
         print("{} arguments:".format(ar-1))
 
