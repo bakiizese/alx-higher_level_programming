@@ -6,7 +6,7 @@ if __name__ == "__main__":
     ln = len(sys.argv)
     if ln != 4:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
-       exit(1)
+        exit(1)
     a = int(sys.argv[1])
     p = sys.argv[2]
     b = int(sys.argv[3])
