@@ -1,49 +1,48 @@
 #include "lists.h"
+
 /**
- * is_palindrome - entry
- * @head: struct var
- * Return: df
+ * is_palindrome - tests if linked lists is palindrome
+ * @head: address of pointer to list
+ * Return: 1 is palindrome else 0
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *w = *head, *f = *head, *node, *pr;
-	int df = 0;
+	listint_t *slow = *head, *fast = *head, *node, *prev;
+	int failed = 0;
 
-	while (f->next != NULL && f != NULL)
+	while (fast != NULL && fast->next != NULL)
 	{
-		f = f->next->next;
-		w = w->next;
+		fast = fast->next->next;
+		slow = slow->next;
 	}
-	node = w;
-	pr = NULL;
+	node = slow;
+	prev = NULL;
 	while (node)
 	{
-		f = node->next;
-		node->next = pr;
-		pr = node;
-		node = f;
+		fast = node->next;
+		node->next = prev;
+		prev = node;
+		node = fast;
 	}
-	node = pr;
-	f = *head;
-
-	while (pr != NULL)
+	fast = *head;
+	node = prev;
+	while (prev)
 	{
-		if (pr->n != f->n)
+		if (fast->n != prev->n)
 		{
-			df = 1;
+			failed = 1;
 			break;
 		}
-		pr = pr->next;
-		f = f->next;
+		fast = fast->next;
+		prev = prev->next;
 	}
-
-	pr = NULL;
-	while (node != NULL)
+	prev = NULL;
+	while (node)
 	{
-		f = node->next;
-		node->next = pr;
-		pr = node;
-		node = f;
+		fast = node->next;
+		node->next = prev;
+		prev = node;
+		node = fast;
 	}
-	return (!df);
+	return (!failed);
 }
