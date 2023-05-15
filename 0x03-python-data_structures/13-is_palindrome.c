@@ -7,42 +7,43 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *slow = *head, *fast = *head, *node, *prev;
-	int failed = 0;
+	listint_t *w = *head;
+	listint_t *f = *head, *node, *pr;
+	int df = 0;
 
-	while (fast != NULL && fast->next != NULL)
+	while (f != NULL && f->next != NULL)
 	{
-		fast = fast->next->next;
-		slow = slow->next;
+		f = f->next->next;
+		w = w->next;
 	}
-	node = slow;
-	prev = NULL;
+	node = w;
+	pr = NULL;
 	while (node)
 	{
-		fast = node->next;
-		node->next = prev;
-		prev = node;
-		node = fast;
+		f = node->next;
+		node->next = pr;
+		pr = node;
+		node = f;
 	}
-	fast = *head;
-	node = prev;
-	while (prev)
+	f = *head;
+	node = pr;
+	while (pr)
 	{
-		if (fast->n != prev->n)
+		if (f->n != pr->n)
 		{
-			failed = 1;
+			df = 1;
 			break;
 		}
-		fast = fast->next;
-		prev = prev->next;
+		f = f->next;
+		pr = pr->next;
 	}
-	prev = NULL;
+	pr = NULL;
 	while (node)
 	{
-		fast = node->next;
-		node->next = prev;
-		prev = node;
-		node = fast;
+		f = node->next;
+		node->next = pr;
+		pr = node;
+		node = f;
 	}
-	return (!failed);
+	return (!df);
 }
