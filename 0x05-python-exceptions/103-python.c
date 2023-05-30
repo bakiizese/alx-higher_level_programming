@@ -1,22 +1,20 @@
 #include <Python.h>
-
 void print_python_list(PyObject *p);
 void print_python_bytes(PyObject *p);
 void print_python_float(PyObject *p);
-
 /**
- * print_python_list - Prints basic info about Python lists.
- * @p: A PyObject list object.
+ * print_python_list - entry
+ * @p: pointer
  */
 void print_python_list(PyObject *p)
 {
-	Py_ssize_t size, alloc, i;
-	const char *type;
+	Py_ssize_t s, ac, i;
+	const char *te;
 	PyListObject *list = (PyListObject *)p;
 	PyVarObject *var = (PyVarObject *)p;
 
-	size = var->ob_size;
-	alloc = list->allocated;
+	s = var->ob_size;
+	ac = list->allocated;
 
 	fflush(stdout);
 
@@ -27,27 +25,26 @@ void print_python_list(PyObject *p)
 		return;
 	}
 
-	printf("[*] Size of the Python List = %ld\n", size);
-	printf("[*] Allocated = %ld\n", alloc);
+	printf("[*] Size of the Python List = %ld\n", s);
+	printf("[*] Allocated = %ld\n", ac);
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < s; i++)
 	{
-		type = list->ob_item[i]->ob_type->tp_name;
-		printf("Element %ld: %s\n", i, type);
-		if (strcmp(type, "bytes") == 0)
+		te = list->ob_item[i]->ob_type->tp_name;
+		printf("Element %ld: %s\n", i, te);
+		if (strcmp(te, "bytes") == 0)
 			print_python_bytes(list->ob_item[i]);
 		else if (strcmp(type, "float") == 0)
 			print_python_float(list->ob_item[i]);
 	}
 }
-
 /**
- * print_python_bytes - Prints basic info about Python byte objects.
- * @p: A PyObject byte object.
+ * print_python_bytes - entry
+ * @p: pointer
  */
 void print_python_bytes(PyObject *p)
 {
-	Py_ssize_t size, i;
+	Py_ssize_t s, i;
 	PyBytesObject *bytes = (PyBytesObject *)p;
 
 	fflush(stdout);
@@ -63,30 +60,29 @@ void print_python_bytes(PyObject *p)
 	printf("  trying string: %s\n", bytes->ob_sval);
 
 	if (((PyVarObject *)p)->ob_size >= 10)
-		size = 10;
+		s = 10;
 	else
-		size = ((PyVarObject *)p)->ob_size + 1;
+		s = ((PyVarObject *)p)->ob_size + 1;
 
-	printf("  first %ld bytes: ", size);
-	for (i = 0; i < size; i++)
+	printf("  first %ld bytes: ", s);
+	for (i = 0; i < s; i++)
 	{
 		printf("%02hhx", bytes->ob_sval[i]);
-		if (i == (size - 1))
+		if (i == (s - 1))
 			printf("\n");
 		else
 			printf(" ");
 	}
 }
-
 /**
- * print_python_float - Prints basic info about Python float objects.
- * @p: A PyObject float object.
+ * print_python_float - entry
+ * @p: pointer
  */
 void print_python_float(PyObject *p)
 {
-	char *buffer = NULL;
+	char *buf = NULL;
 
-	PyFloatObject *float_obj = (PyFloatObject *)p;
+	PyFloatObject *f_obj = (PyFloatObject *)p;
 
 	fflush(stdout);
 
@@ -97,8 +93,8 @@ void print_python_float(PyObject *p)
 		return;
 	}
 
-	buffer = PyOS_double_to_string(float_obj->ob_fval, 'r', 0,
+	buf = PyOS_double_to_string(f_obj->ob_fval, 'r', 0,
 			Py_DTSF_ADD_DOT_0, NULL);
-	printf("  value: %s\n", buffer);
-	PyMem_Free(buffer);
+	printf("  value: %s\n", buf);
+	PyMem_Free(buf);
 }
