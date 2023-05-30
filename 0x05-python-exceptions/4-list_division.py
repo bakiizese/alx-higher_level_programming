@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def list_division(my_list_1, my_list_2, list_length):
-    d = []
+    ds = []
     result = 0
     for i in range(0, list_length):
         try:
@@ -15,5 +15,5 @@ def list_division(my_list_1, my_list_2, list_length):
             print("out of range")
         finally:
             pass
-        d.append(result)
-    return d
+        ds.append(result)
+    return ds
