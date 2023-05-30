@@ -1,4 +1,5 @@
 #include <Python.h>
+
 void print_python_list(PyObject *p);
 void print_python_bytes(PyObject *p);
 void print_python_float(PyObject *p);
@@ -34,7 +35,7 @@ void print_python_list(PyObject *p)
 		printf("Element %ld: %s\n", i, te);
 		if (strcmp(te, "bytes") == 0)
 			print_python_bytes(list->ob_item[i]);
-		else if (strcmp(type, "float") == 0)
+		else if (strcmp(te, "float") == 0)
 			print_python_float(list->ob_item[i]);
 	}
 }
