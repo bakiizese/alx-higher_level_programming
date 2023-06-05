@@ -4,6 +4,7 @@
 
 class Rectangle:
     '''presenting a rectangle class'''
+
     def __init__(self, width=0, height=0):
         '''an init method'''
         self.height = height
