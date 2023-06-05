@@ -65,4 +65,4 @@ class Rectangle:
 
     def __del__(self):
         '''print message'''
-        print("Bye Rectangle...")
+        print("Bye rectangle...")
