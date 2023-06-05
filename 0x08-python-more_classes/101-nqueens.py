@@ -50,13 +50,10 @@ def xout(board, row, col):
         row (int): The row where a queen was last played.
         col (int): The column where a queen was last played.
     """
-    # X out all forward spots
     for c in range(col + 1, len(board)):
         board[row][c] = "x"
-    # X out all backwards spots
     for c in range(col - 1, -1, -1):
         board[row][c] = "x"
-    # X out all spots below
     for r in range(row + 1, len(board)):
         board[r][col] = "x"
     # X out all spots above
