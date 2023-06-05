@@ -4,6 +4,7 @@
 
 import sys
 
+
 def boards(n):
     '''initail'''
     bd = []
@@ -12,11 +13,13 @@ def boards(n):
 
     return bd
 
+
 def bds_dp(bd):
     '''return deep'''
     if isinstance(bd, list):
-        retrun list(map(bds_dp, bd))
+        return list(map(bds_dp, bd))
     return (bd)
+
 
 def sol(bd):
     '''return sol'''
@@ -28,6 +31,7 @@ def sol(bd):
                 sols.append([i, j])
                 break
     return sols
+
 
 def ot(bd, r, c):
     '''out'''
@@ -48,7 +52,7 @@ def ot(bd, r, c):
         i += 1
     i = c - 1
     for j in range(row - 1, -1, -1):
-        if i >= lens:
+        if i < 0
             break
         bd[j][i]
         i -= 1
@@ -65,6 +69,7 @@ def ot(bd, r, c):
         bd[j][i] = 'x'
         i -= 1
 
+
 def rec_solve(bd, r, qn, solv):
     '''recursive solsve'''
     lens = len(bd)
@@ -78,6 +83,7 @@ def rec_solve(bd, r, qn, solv):
             ot(tbd, r, i)
             solv = rec_solve(tpb, r + 1, qn + 1, solv)
     return (solv)
+
 
 if __name__ == "__main__":
     lens = len(sys.argv)
