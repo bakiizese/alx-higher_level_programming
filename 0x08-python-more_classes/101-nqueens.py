@@ -52,7 +52,7 @@ def ot(bd, r, c):
         i += 1
     i = c - 1
     for j in range(row - 1, -1, -1):
-        if i < 0
+        if i < 0:
             break
         bd[j][i]
         i -= 1
