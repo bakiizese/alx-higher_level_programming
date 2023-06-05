@@ -7,87 +7,84 @@ import sys
 
 def boards(n):
     '''initail'''
-    bd = []
-    [bd.append([]) for i in range(n)]
-    [r.append(' ') for i in range(n) for r in bd]
+    board = []
+    [board.append([]) for i in range(n)]
+    [row.append(' ') for i in range(n) for row in board]
+    return (board)
 
-    return bd
 
-
-def bds_dp(bd):
+def bds_dp(board):
     '''return deep'''
-    if isinstance(bd, list):
-        return list(map(bds_dp, bd))
-    return (bd)
+    if isinstance(board, list):
+        return list(map(bds_dp, board))
+    return (board)
 
 
-def sol(bd):
+def sol(board):
     '''return sol'''
-    sols = []
-    lens = len(bd)
-    for i in range(lens):
-        for j in range(lens):
-            if bd[i][j] == "Q":
-                sols.append([i, j])
+    solution = []
+    for r in range(len(board)):
+        for c in range(len(board)):
+            if board[r][c] == "Q":
+                solution.append([r, c])
                 break
-    return sols
+    return (solution)
 
 
-def ot(bd, r, c):
+def ot(board, row, col):
     '''out'''
-    lens = len(bd)
-    for i in range(c + 1, lens):
-        bd[r][i] = 'x'
-    for i in range(c - 1, -1, -1):
-        bd[r][i] = 'x'
-    for j in range(r + 1, lens):
-        bd[j][c] = 'x'
-    for j in range(r - 1, -1, -1):
-        bd[j][c] = 'x'
-    i = c + 1
-    for j in range(r + 1, lens):
-        if i >= lens:
+    for c in range(col + 1, len(board)):
+        board[row][c] = "x"
+    for c in range(col - 1, -1, -1):
+        board[row][c] = "x"
+    for r in range(row + 1, len(board)):
+        board[r][col] = "x"
+    for r in range(row - 1, -1, -1):
+        board[r][col] = "x"
+    c = col + 1
+    for r in range(row + 1, len(board)):
+        if c >= len(board):
             break
-        bd[j][i] = 'x'
-        i += 1
-    i = c - 1
-    for j in range(row - 1, -1, -1):
-        if i < 0:
+        board[r][c] = "x"
+        c += 1
+    c = col - 1
+    for r in range(row - 1, -1, -1):
+        if c < 0:
             break
-        bd[j][i]
-        i -= 1
-    i = c + 1
-    for j in range(r - 1, -1, -1):
-        if i >= lens:
+        board[r][c]
+        c -= 1
+    c = col + 1
+    for r in range(row - 1, -1, -1):
+        if c >= len(board):
             break
-        bd[j][i] = 'x'
-        i += 1
-    i = c - 1
-    for j in range(r + 1, lens):
-        if i < 0:
+        board[r][c] = "x"
+        c += 1
+    c = col - 1
+    for r in range(row + 1, len(board)):
+        if c < 0:
             break
-        bd[j][i] = 'x'
-        i -= 1
+        board[r][c] = "x"
+        c -= 1
 
 
-def rec_solve(bd, r, qn, solv):
+def rec_solve(board, row, queens, solutions):
     '''recursive solsve'''
-    lens = len(bd)
-    if qn = lens:
-        solv.append(sol(bd))
-        return (solv)
-    for i in range(lens):
-        if board[r][i] == " ":
-            tbd = bds_dp(bd)
-            tbd[r][i] = 'Q'
-            ot(tbd, r, i)
-            solv = rec_solve(tpb, r + 1, qn + 1, solv)
-    return (solv)
+    if queens == len(board):
+        solutions.append(get_solution(board))
+        return (solutions)
+
+    for c in range(len(board)):
+        if board[row][c] == " ":
+            tmp_board = bds_dp(board)
+            tmp_board[row][c] = "Q"
+            xout(tmp_board, row, c)
+            solutions = rec_solve(tmp_board, row + 1, queens + 1, solutions)
+
+    return (solutions)
 
 
 if __name__ == "__main__":
-    lens = len(sys.argv)
-    if lens != 2:
+    if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
     if sys.argv[1].isdigit() is False:
@@ -97,7 +94,7 @@ if __name__ == "__main__":
         print("N must be at least 4")
         sys.exit(1)
 
-    bd = boards(int(sys.argv[1]))
-    solutions = rec_solve(bd, 0, 0, [])
+    board = boards(int(sys.argv[1]))
+    solutions = rec_solve(board, 0, 0, [])
     for sol in solutions:
         print(sol)
