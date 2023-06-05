@@ -56,6 +56,10 @@ class Rectangle:
         else:
             return (rect_2)
 
+    @classmethod
+    def square(cls, size=0):
+        '''retrun new rec'''
+        return (cls(size, size))
     def perimeter(self):
         '''return perimeter'''
         if self.__width == 0 or self.__height == 0:
@@ -81,4 +85,4 @@ class Rectangle:
     def __del__(self):
         '''print message'''
         type(self).number_of_instances -= 1
-        print("Bye rectangle...")
+        print("Bye rectangle..."
