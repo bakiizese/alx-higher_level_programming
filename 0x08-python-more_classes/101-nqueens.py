@@ -5,7 +5,7 @@
 import sys
 
 
-def boards(n):
+def init_boards(n):
     '''initail'''
     board = []
     [board.append([]) for i in range(n)]
@@ -94,7 +94,7 @@ if __name__ == "__main__":
         print("N must be at least 4")
         sys.exit(1)
 
-    board = boards(int(sys.argv[1]))
+    board = init_board(int(sys.argv[1]))
     solutions = rec_solve(board, 0, 0, [])
     for sol in solutions:
         print(sol)
