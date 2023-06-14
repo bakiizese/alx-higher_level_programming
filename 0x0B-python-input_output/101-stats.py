@@ -8,18 +8,19 @@ def print_stats(size, status_codes):
     for key in sorted(status_codes):
         print("{}: {}".format(key, status_codes[key]))
 
+
 if __name__ == "__main__":
     import sys
 
     size = 0
-    s_code = {}
-    v_code = ['200', '301', '400', '401', '403', '404', '405', '500']
+    status_codes = {}
+    valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
     count = 0
 
     try:
         for line in sys.stdin:
             if count == 10:
-                p_stats(size, s_code)
+                print_stats(size, status_codes)
                 count = 1
             else:
                 count += 1
@@ -32,16 +33,16 @@ if __name__ == "__main__":
                 pass
 
             try:
-                if line[-2] in v_code:
-                    if s_code.get(line[-2], -1) == -1:
-                        s_code[line[-2]] = 1
+                if line[-2] in valid_codes:
+                    if status_codes.get(line[-2], -1) == -1:
+                        status_codes[line[-2]] = 1
                     else:
-                        s_code[line[-2]] += 1
+                        status_codes[line[-2]] += 1
             except IndexError:
                 pass
 
-        p_stats(size, s_code)
+        print_stats(size, status_codes)
 
     except KeyboardInterrupt:
-        p_stats(size, s_code)
+        print_stats(size, status_codes)
         raise
