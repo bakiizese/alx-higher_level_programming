@@ -13,7 +13,7 @@ class Rectangle:
     @property
     def width(self):
         '''width;;;'''
-        return self.__width
+        return (self.__width)
 
     @width.setter
     def width(self, value):
@@ -26,7 +26,7 @@ class Rectangle:
     @property
     def height(self):
         '''eight'''
-        return self.__height
+        return (self.__height)
 
     @height.setter
     def height(self, value):
@@ -38,13 +38,13 @@ class Rectangle:
 
     def area(self):
         '''return area;'''
-        return self.__width * self.__height
+        return (self.__width * self.__height)
 
     def perimeter(self):
         '''return perimeter'''
         if self.__width == 0 or self.__height == 0:
-            return 0
-        return 2 * (self.__width + self.__height)
+            return (0)
+        return ((self.__width * 2) + (self.__height * 2))
 
     def __str__(self):
         '''print #'''
