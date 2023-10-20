@@ -1,12 +1,18 @@
 #!/usr/bin/python3
+'''a real rectangle'''
+
 
 class Rectangle:
+    ''''preseintg'''
+
     def __init__(self, width = 0, height = 0):
+        '''initial'''
         self.__width = width
         self.__height = height
 
     @property
     def width(self):
+        '''width;;;'''
         return self.__width
     @width.setter
     def width(self, value):
@@ -18,6 +24,7 @@ class Rectangle:
 
     @property
     def height(self):
+        '''eight'''
         return self.__height
     @height.setter
     def height(self, value):
@@ -28,19 +35,22 @@ class Rectangle:
         self.__height = value
 
     def area(self):
+        '''return area;'''
         return self.__width * self.__height
 
     def perimeter(self):
+        '''return perimeter'''
         if self.__width == 0 or self.__height == 0:
             return 0
         return 2 * (self.__width + self.__height)
 
     def __str__(self):
-        if self.__width == 0 or self.__height == 0:
-            return ('')
+        '''print #'''
+        if self.__width == 0 or self.height == 0:
+            return("")
+        r = []
         for i in range(self.__height):
-            for j in range(self.__width):
-                print("#", end = '')
+            [r.append("#") for k in range(self.__width)]
             if i != self.__height - 1:
-                print('')
-        return ('')
+                r.append("\n")
+        return ("".join(r))
