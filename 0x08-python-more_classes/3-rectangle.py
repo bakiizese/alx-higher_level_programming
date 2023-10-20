@@ -5,7 +5,7 @@
 class Rectangle:
     ''''preseintg'''
 
-    def __init__(self, width = 0, height = 0):
+    def __init__(self, width=0, height=0):
         '''initial'''
         self.__width = width
         self.__height = height
@@ -14,6 +14,7 @@ class Rectangle:
     def width(self):
         '''width;;;'''
         return self.__width
+
     @width.setter
     def width(self, value):
         if not isinstance(value, int):
@@ -26,6 +27,7 @@ class Rectangle:
     def height(self):
         '''eight'''
         return self.__height
+
     @height.setter
     def height(self, value):
         if not isinstance(value, int):
