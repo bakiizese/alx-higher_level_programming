@@ -6,7 +6,7 @@ if (process.argv.length <= 2) {
 } else {
   let max = process.argv[3];
   let maxs = max;
-  for (let i = 2; i <= process.argv.length; i++) {
+  for (let i = 2; i <= process.argv.length - 1; i++) {
     if (max < process.argv[i]) {
       maxs = max;
       max = process.argv[i];
