@@ -1,9 +1,9 @@
 #!/usr/bin/node
-const size = parseInt(process.argv[2], 10);
+const size = Math.floor(Number(process.argv[2]));
 
 if (size) {
   for (let i = 1; i <= size; i++) {
-    let sp = ''
+    let sp = '';
     for (let j = 1; j <= size; j++) {
       sp += 'x';
     }
