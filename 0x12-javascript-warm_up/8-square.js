@@ -6,7 +6,7 @@ if (size) {
     for (let j = 1; j <= size; j++) {
       process.stdout.write('x');
     }
-    console.log('');
+    console.log();
   }
 } else {
   console.log('Missing size');
