@@ -7,9 +7,9 @@ if (num) {
   console.log('1');
 }
 
-function factorial(num) {
-  if (num == 1) {
-  return 1;
+function factorial (num) {
+  if (num === 1) {
+    return 1;
   }
-  return num * (num - 1);
+  return num * factorial(num - 1);
 }
