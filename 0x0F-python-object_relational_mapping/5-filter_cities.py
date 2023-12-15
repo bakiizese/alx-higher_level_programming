@@ -18,7 +18,7 @@ if __name__ == '__main__':
     for row in rows:
         print(row[0], end='')
         n += 1
-        if  n < len(rows):
+        if n < len(rows):
             print(', ', end='')
     print('')
     cur.close()
