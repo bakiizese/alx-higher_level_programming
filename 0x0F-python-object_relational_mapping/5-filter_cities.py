@@ -14,7 +14,12 @@ if __name__ == '__main__':
                    INNER JOIN states ON states.id=cities.state_id WHERE
                    states.name LIKE BINARY %s ORDER BY state_id""", (ms, ))
     rows = cur.fetchall()
-    tmp = list(row[0] for row in rows)
-    print(*tmp, sep=", ")
+    n = 0
+    for row in rows:
+        print(row[0], end='')
+        n += 1
+        if  n < len(rows):
+            print(', ', end='')
+    print('')
     cur.close()
     db.close()
