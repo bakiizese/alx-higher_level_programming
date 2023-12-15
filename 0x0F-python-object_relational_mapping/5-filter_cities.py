@@ -13,7 +13,7 @@ if __name__ == '__main__':
     cur.execute("""SELECT cities.name FROM cities
                    INNER JOIN states ON states.id=cities.state_id WHERE
                    states.name LIKE BINARY %s ORDER BY state_id""", (ms, ))
-    row = cur.fetchall()
+    rows = cur.fetchall()
     tmp = list(row[0] for row in rows)
     print(*tmp, sep=", ")
     cur.close()
