@@ -12,8 +12,7 @@ from sqlalchemy.orm import relationship
 class State(Base):
     '''class to db'''
     __tablename__ = 'states'
-    id = Column(Integer, autoincrement=True, primary_key=True,
-                unique=True, nullable=False)
+    id = Column(Integer, primary_key=True)
     name = Column(String(128), nullable=False)
 
     cities = relationship("City", backref="state", cascade="all, delete")
