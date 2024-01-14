@@ -1,3 +1,12 @@
+=============================
+How to Use 7-base_geometry.py
+=============================
+
+This modules defines a base geometry class BaseGeometry.
+
+Instantiation
+=============
+
 `BaseGeometry` includes no attributes, and accordingly is initialized
 with no arguments.
 
@@ -130,7 +139,9 @@ Both `name` and `value` must be provided. Otherwise, a TypeError is raised.
 
 The method assumes the paramter `name` will be a string, but `name` of any
 type will be printed.
+
 ::
+
     >>> bg.integer_validator({"a": 1}, (1, 2))
     Traceback (most recent call last):
     TypeError: {'a': 1} must be an integer
