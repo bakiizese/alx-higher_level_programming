@@ -6,5 +6,5 @@ request(process.argv[2], (err, resp) => {
     console.log(err);
     return;
   }
-  console.log(resp.statusCode);
+  console.log('code: ' + resp.statusCode);
 });
